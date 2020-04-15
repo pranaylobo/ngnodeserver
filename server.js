@@ -26,7 +26,10 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 
-
+app.use(cors({
+  origin: ['https://mngoconnection.web.app/','https://mngoconnection.firebaseapp.com/'],
+  credentials: true
+}));
 
 app.use(cookieParser());
 app.use(session({
