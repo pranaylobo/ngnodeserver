@@ -257,7 +257,7 @@ res.status(200).send({"message":"Data recieved"})
  });
 
 app.use(bodyparser.urlencoded({extended:false}));
-app.use(express.static("public))
+app.use(express.static("public"))
 app.use('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
