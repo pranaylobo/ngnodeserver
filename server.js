@@ -6,7 +6,7 @@ const cors = require('cors')
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://Pranay:REDcherry%401@angulartest-wdzzt.gcp.mongodb.net/test?authSource=admin&replicaSet=Angulartest-shard-0&readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=true";
 const fetch = require("node-fetch");
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 const app = express();
 const delay = require('delay');
  var pass,email;
@@ -14,6 +14,18 @@ const delay = require('delay');
 
 const router = express.Router();
 // app.use(cors());
+var whitelist = [
+  'https://mngoconnection.web.app/',
+];
+var corsOptions = {
+  origin: function(origin, callback){
+      var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+      callback(null, originIsWhitelisted);
+  },
+  credentials: true
+};
+app.use(cors(corsOptions));
+
 app.use(cors({
   origin: ['https://mngoconnection.web.app/','https://mngoconnection.firebaseapp.com/'],
   credentials: true
