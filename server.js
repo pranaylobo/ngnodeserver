@@ -12,12 +12,6 @@ const delay = require('delay');
  var pass,email;
 
 
-app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
-
 app.use(cors({
   origin: ['https://mngoconnection.web.app/','https://mngoconnection.firebaseapp.com/'],
   credentials: true
@@ -261,6 +255,14 @@ MongoClient.connect(url, function(err, db) {
 });
 res.status(200).send({"message":"Data recieved"})
  });
+
+app.use(bodyparser.urlencoded({extended:false}));
+app.use(express.static("public))
+app.use('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 
  app.listen(PORT,function()
  {
