@@ -12,7 +12,11 @@ const delay = require('delay');
  var pass,email;
 
 
-
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 
 app.use(cors({
   origin: ['https://mngoconnection.web.app/','https://mngoconnection.firebaseapp.com/'],
