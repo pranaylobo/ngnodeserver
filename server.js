@@ -12,19 +12,7 @@ const delay = require('delay');
  var pass,email;
 
 
-const router = express.Router();
-// app.use(cors());
-var whitelist = [
-  'https://mngoconnection.web.app/',
-];
-var corsOptions = {
-  origin: function(origin, callback){
-      var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-      callback(null, originIsWhitelisted);
-  },
-  credentials: true
-};
-app.use(cors(corsOptions));
+
 
 app.use(cors({
   origin: ['https://mngoconnection.web.app/','https://mngoconnection.firebaseapp.com/'],
